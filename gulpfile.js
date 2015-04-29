@@ -22,7 +22,7 @@ var gulp = require('gulp'),
         .on('error', gutil.log))
         .pipe(gulp.dest('builds/development/css'))
     });
-    
+
 
     gulp.task('js', function() {
         gulp.src(jsSources)
@@ -44,4 +44,6 @@ var gulp = require('gulp'),
     	.pipe(gulp.dest('components/scripts'))
     });
 
+
+    gulp.task('default', ['coffee', 'js', 'compass']);
 
