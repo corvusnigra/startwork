@@ -1,9 +1,19 @@
 var gulp = require('gulp'),
     gutil = require('gulp-util'),
-    coffee = require('gulp-coffee');
+    coffee = require('gulp-coffee'),
+    concat = require('gulp-concat');
 
     
-    var coffeeSources = ['components/coffee/*']
+    var coffeeSources = ['components/coffee/*'];
+    var jsSources = ['components/scripts/*'];
+
+    gulp.task('js', function() {
+        gulp.src(jsSources)
+        .pipe(concat('script.js'))
+        .pipe(gulp.dest('builds/development/js'))
+    });
+
+
     gulp.task('log', function() {
     	gutil.log('work')
     });
