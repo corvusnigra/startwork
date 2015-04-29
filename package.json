@@ -1,0 +1,10 @@
+{
+  "name": "startwork",
+  "version": "0.0.1",
+  "description": "templates for start",
+  "repository": {
+    "type": "git",
+    "url": "?.git"
+  },
+  "author": "corvusnigra",
+}
