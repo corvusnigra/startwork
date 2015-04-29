@@ -3,11 +3,20 @@ var gulp = require('gulp'),
     coffee = require('gulp-coffee'),
     browserify = require('gulp-browserify'),
     compass = require('gulp-compass'),
+    connect = require('gulp-connect'),
     concat = require('gulp-concat');
 
     var sassSources = ['components/sass/style.scss'];
     var coffeeSources = ['components/coffee/*'];
     var jsSources = ['components/scripts/*'];
+
+    gulp.task('connect', function() {
+    	connect.server({
+    		root : 'builds/development',
+            livereload : true
+    	});
+    });
+
 
     gulp.task('watch', function() {
     	gulp.watch(coffeeSources, ['coffee']);
@@ -28,6 +37,7 @@ var gulp = require('gulp'),
         })
         .on('error', gutil.log))
         .pipe(gulp.dest('builds/development/css'))
+        .pipe(connect.reload())
     });
 
 
@@ -36,6 +46,7 @@ var gulp = require('gulp'),
         .pipe(concat('script.js'))
         .pipe(browserify())
         .pipe(gulp.dest('builds/development/js'))
+        .pipe(connect.reload())
     });
 
 
@@ -52,5 +63,5 @@ var gulp = require('gulp'),
     });
 
 
-    gulp.task('default', ['coffee', 'js', 'compass', 'watch']);
+    gulp.task('default', ['coffee', 'js', 'compass', 'connect', 'watch']);
 
