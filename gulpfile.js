@@ -7,8 +7,23 @@ var gulp = require('gulp'),
     concat = require('gulp-concat');
 
     var sassSources = ['components/sass/style.scss'];
+    var htmlSources = ['builds/development/*.html'];
+    var jsonSources = ['builds/development/js/*.json'];
     var coffeeSources = ['components/coffee/*'];
-    var jsSources = ['components/scripts/*'];
+    var jsSources = ['components/scripts/*.js'];
+
+
+    gulp.task('json', function() {
+    	gulp.src('builds/development/js/*.json')
+    	.pipe(connect.reload())
+    });
+
+
+    gulp.task('html', function() {
+    	gulp.src(htmlSources)
+    	.pipe(connect.reload())
+    });
+
 
     gulp.task('connect', function() {
     	connect.server({
@@ -22,6 +37,7 @@ var gulp = require('gulp'),
     	gulp.watch(coffeeSources, ['coffee']);
     	gulp.watch(jsSources, ['js']);
     	gulp.watch('components/sass/*.scss', ['compass']);
+    	gulp.watch(htmlSources, ['html']);
 
     });
 
@@ -63,5 +79,5 @@ var gulp = require('gulp'),
     });
 
 
-    gulp.task('default', ['coffee', 'js', 'compass', 'connect', 'watch']);
+    gulp.task('default', ['html', 'coffee', 'js', 'json', 'compass', 'connect', 'watch']);
 
