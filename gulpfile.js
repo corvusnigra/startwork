@@ -8,7 +8,7 @@ var gulp = require('gulp'),
     uglify = require('gulp-uglify'),
     minifyHTML = require('gulp-minify-html'),
     jsonminify = require('gulp-jsonminify'),
-    concat = require('gulp-concat'),
+    concat = require('gulp-concat');
     
 
 
@@ -31,7 +31,7 @@ var gulp = require('gulp'),
     	outputDir = 'builds/development/';
     	sassStyle = 'expanded';
     }else{
-    	outputDir = 'builds/prodaction/';
+    	outputDir = 'builds/production/';
     	sassStyle = 'compressed';
     }
    
